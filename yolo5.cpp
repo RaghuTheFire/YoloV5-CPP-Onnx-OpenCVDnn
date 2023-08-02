@@ -22,7 +22,8 @@ const int THICKNESS = 1;
 std::vector<std::string> load_class_list()
 {
     std::vector<std::string> class_list;
-    std::ifstream ifs("coco.names");
+    //std::ifstream ifs("coco.names");
+    std::ifstream ifs("classes.txt");
     std::string line;
     while (getline(ifs, line))
     {
