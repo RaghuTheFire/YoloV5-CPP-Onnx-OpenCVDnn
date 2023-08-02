@@ -5,7 +5,7 @@ project(yolov5 VERSION 0.1.0)
 
 find_package(OpenCV REQUIRED)
 
-add_executable(main yolo.cpp)
+add_executable(yolo yolo5.cpp)
 
 include_directories(${OpenCV_INCLUDE_DIRS})
 target_link_libraries(main ${OpenCV_LIBS} ${CMAKE_THREAD_LIBS_INIT})
