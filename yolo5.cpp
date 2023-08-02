@@ -69,7 +69,8 @@ struct Detection
     cv::Rect box;
 };
 
-cv::Mat format_yolov5(const cv::Mat &source) {
+cv::Mat format_yolov5(const cv::Mat &source) 
+{
     int col = source.cols;
     int row = source.rows;
     int _max = MAX(col, row);
@@ -78,9 +79,9 @@ cv::Mat format_yolov5(const cv::Mat &source) {
     return result;
 }
 
-void detect(cv::Mat &image, cv::dnn::Net &net, std::vector<Detection> &output, const std::vector<std::string> &className) {
+void detect(cv::Mat &image, cv::dnn::Net &net, std::vector<Detection> &output, const std::vector<std::string> &className) 
+{
     cv::Mat blob;
-
     auto input_image = format_yolov5(image);
     
     // Convert to blob
@@ -106,12 +107,14 @@ void detect(cv::Mat &image, cv::dnn::Net &net, std::vector<Detection> &output, c
     std::vector<cv::Rect> boxes;
 
     // Iterate through 25200 detections
-    for (int i = 0; i < rows; ++i) {
+    for (int i = 0; i < rows; ++i) 
+    {
 
         float confidence = data[4];
 
         // Discard bad detections and continue
-        if (confidence >= CONFIDENCE_THRESHOLD) {
+        if (confidence >= CONFIDENCE_THRESHOLD) 
+        {
 
             float * classes_scores = data + 5;
 
@@ -124,7 +127,8 @@ void detect(cv::Mat &image, cv::dnn::Net &net, std::vector<Detection> &output, c
             minMaxLoc(scores, 0, &max_class_score, 0, &class_id);
 
             // Continue if the class score is above the threshold
-            if (max_class_score > SCORE_THRESHOLD) {
+            if (max_class_score > SCORE_THRESHOLD) 
+            {
 
                 // Store class ID and confidence in the pre-defined respective vectors
                 confidences.push_back(confidence);
@@ -156,7 +160,8 @@ void detect(cv::Mat &image, cv::dnn::Net &net, std::vector<Detection> &output, c
     // Perform Non Maximum Suppression and draw predictions
     std::vector<int> nms_result;
     cv::dnn::NMSBoxes(boxes, confidences, SCORE_THRESHOLD, NMS_THRESHOLD, nms_result);
-    for (int i = 0; i < nms_result.size(); i++) {
+    for (int i = 0; i < nms_result.size(); i++) 
+    {
         int idx = nms_result[i];
         Detection result;
         result.class_id = class_ids[idx];
@@ -172,10 +177,10 @@ int main(int argc, char **argv)
 
     std::vector<std::string> class_list = load_class_list();
 
-    // Load input video/image 
+    //Load input video/image 
     cv::Mat frame;
     cv::VideoCapture capture("/home/bstc/Desktop/yolov5-opencv-cpp-python/test.mp4",cv::CAP_FFMPEG);
-    // cv::VideoCapture capture(0);
+    //cv::VideoCapture capture(0);
     if (!capture.isOpened())
     {
         std::cerr << "Error opening video file\n";
@@ -191,9 +196,7 @@ int main(int argc, char **argv)
     float fps = -1;
     int total_frames = 0;
 
-    // cv::VideoWriter::VideoWriter("out.avi",cv::Size(INPUT_WIDTH, INPUT_HEIGHT),true);
-
-
+    //cv::VideoWriter::VideoWriter("out.avi",cv::Size(INPUT_WIDTH, INPUT_HEIGHT),true);
     while (true)
     {
         capture.read(frame);
@@ -224,24 +227,20 @@ int main(int argc, char **argv)
             // cv::rectangle(frame, box, color, 3);
             // cv::rectangle(frame, cv::Point(box.x, box.y - 20), cv::Point(box.x + box.width, box.y,), color, cv::FILLED);
             cv::rectangle(frame, cv::Point(box.x, box.y), cv::Point(box.x + box.width, box.y +box.height), color, 0);
-// --------------------
+            // --------------------
             std::ostringstream fps_label;
             fps_label << "FPS: " << 500;
             std::string fps_label_str = fps_label.str();
             cv::putText(frame, fps_label_str.c_str(), cv::Point(500, 200), cv::FONT_HERSHEY_SIMPLEX, 1, cv::Scalar(0, 0, 0), 3);            
-            
-// --------------------
-
+            // --------------------
             // Draw class labels
             cv::putText(frame, class_list[classId].c_str(), cv::Point(box.x, box.y - 5), cv::FONT_HERSHEY_SIMPLEX, 0.5, cv::Scalar(0, 0, 0));
         }
 
         if (frame_count >= 10)
         {
-
             auto end = std::chrono::high_resolution_clock::now();
             fps = frame_count * 1000.0 / std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
-
             frame_count = 0;
             start = std::chrono::high_resolution_clock::now();
         }
@@ -258,7 +257,7 @@ int main(int argc, char **argv)
         cv::imshow("output", frame);
         cv::waitKey(1);
         //Initialize video writer object
-        // cv::VideoWriter output("output.avi", VideoWriter::fourcc('M', 'J', 'P', 'G'),frame);
+        //cv::VideoWriter output("output.avi", VideoWriter::fourcc('M', 'J', 'P', 'G'),frame);
         if (cv::waitKey(1) != -1)
         {
             capture.release();
