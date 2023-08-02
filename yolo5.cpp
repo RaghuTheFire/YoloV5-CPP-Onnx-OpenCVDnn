@@ -3,7 +3,7 @@
 // $ cd build
 // $ cmake ..
 // $ cmake --build . --config Release
-// $ ./main
+// $ ./yolo5
 
 // Include Libraries
 #include <fstream>
