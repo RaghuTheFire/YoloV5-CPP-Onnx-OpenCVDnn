@@ -23,7 +23,7 @@ const int THICKNESS = 1;
 std::vector<std::string> load_class_list()
 {
     std::vector<std::string> class_list;
-    std::ifstream ifs("/home/linus/yolov5-opencv-cpp-python/classes.txt");
+    std::ifstream ifs("coco.names");
     std::string line;
     while (getline(ifs, line))
     {
