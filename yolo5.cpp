@@ -1,9 +1,3 @@
-// Usuage : 
-// $ mkdir build
-// $ cd build
-// $ cmake ..
-// $ ./yolo5
-
 // Include Libraries
 #include <fstream>
 #include <opencv2/opencv.hpp>
