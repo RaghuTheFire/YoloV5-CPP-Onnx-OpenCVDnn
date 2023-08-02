@@ -2,7 +2,6 @@
 // $ mkdir build
 // $ cd build
 // $ cmake ..
-// $ cmake --build . --config Release
 // $ ./yolo5
 
 // Include Libraries
@@ -35,8 +34,7 @@ std::vector<std::string> load_class_list()
 // Loading Onnx format weight file
 void load_net(cv::dnn::Net &net, bool is_cuda)
 {
-    // auto result = cv::dnn::readNetFromONNX("/home/linus/yolov5-opencv-cpp-python/weights/yolov5s.onnx");
-    auto result = cv::dnn::readNet("/home/bstc/Desktop/yolov5-opencv-cpp-python/weights/yolov5n.onnx");
+    auto result = cv::dnn::readNet("yolov5n.onnx");
     
     // Using CPU or GPU based on available system
     if (is_cuda)
