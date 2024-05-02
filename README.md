@@ -31,8 +31,8 @@ The code is designed to work with both video files and webcam streams. It can al
 
 
 # Commands for Building the Application: 
-# mkdir build
-# cd build
-# cmake ..
-# ./yolo5
+- mkdir build
+- cd build
+- cmake ..
+- ./yolo5
 
