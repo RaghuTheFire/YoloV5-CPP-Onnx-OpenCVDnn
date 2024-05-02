@@ -1,9 +1,11 @@
-# Commands for Running the Application: 
+
+
+
+
+
+# Commands for Building the Application: 
 mkdir build
-
 cd build
-
 cmake ..
-
 ./yolo5
 
