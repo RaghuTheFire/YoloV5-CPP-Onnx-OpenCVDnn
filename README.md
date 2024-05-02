@@ -34,5 +34,5 @@ The code is designed to work with both video files and webcam streams. It can al
 - mkdir build
 - cd build
 - cmake ..
-- ./yolo5
+- ./YoloV5
 
