@@ -4,8 +4,8 @@
 
 
 # Commands for Building the Application: 
-mkdir build
-cd build
-cmake ..
-./yolo5
+# mkdir build
+# cd build
+# cmake ..
+# ./yolo5
 
