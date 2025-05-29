@@ -28,12 +28,12 @@ It performs the following tasks:
 The code is designed to work with both video files and webcam streams. It can also be configured to run on either a CPU or a GPU (if available) by passing the "cuda" argument when running the program.
 
 
-![Uploading HowYoloWorks.jpeg…]()
-
-
 # Commands for Building the Application: 
 - mkdir build
 - cd build
 - cmake ..
 - ./YoloV5
 
+  
+
+![HowYoloWorks](https://github.com/user-attachments/assets/6819ec4c-6e25-49ea-aaca-8689e421517f)
