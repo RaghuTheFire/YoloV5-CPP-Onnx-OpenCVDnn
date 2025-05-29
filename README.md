@@ -28,6 +28,7 @@ It performs the following tasks:
 The code is designed to work with both video files and webcam streams. It can also be configured to run on either a CPU or a GPU (if available) by passing the "cuda" argument when running the program.
 
 
+![Uploading HowYoloWorks.jpeg…]()
 
 
 # Commands for Building the Application: 
